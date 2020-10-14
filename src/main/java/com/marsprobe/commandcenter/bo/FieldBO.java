@@ -5,6 +5,7 @@ import java.util.List;
 import com.marsprobe.commandcenter.dao.FieldDAO;
 import com.marsprobe.commandcenter.entities.Field;
 import com.marsprobe.commandcenter.exceptions.DuplicateIdException;
+import com.marsprobe.commandcenter.exceptions.FieldHasProbesException;
 import com.marsprobe.commandcenter.exceptions.InvalidFieldSizeException;
 import com.marsprobe.commandcenter.exceptions.InvalidIdException;
 import com.marsprobe.commandcenter.exceptions.InvalidRequestBodyException;
@@ -19,7 +20,6 @@ public class FieldBO {
 	}
 
 	public void create(Field field) { 
-		
 		try {
 			
 			Field element = getFieldById(field.getId());
@@ -44,8 +44,6 @@ public class FieldBO {
 		} catch (InvalidIdException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	public void update(int id, Field field) { 
@@ -78,7 +76,17 @@ public class FieldBO {
 	}
 	
 	public void delete(int id) {
-		dao.delete(id);
+		try {
+			Field element = getFieldById(id);
+			
+			if (element != null && element.getProbes().size() > 0) {
+				throw new FieldHasProbesException("This field has probes registered to it, delete all Probes before deleting the field. Number of probes registered: " + element.getProbes().size());
+			}
+			
+			dao.delete(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public List<Field> getFields() {

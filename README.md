@@ -28,7 +28,9 @@ To move your Probe, use the following link instructions:
 http://localhost:8080/probe/{id}?command=LMLMLM
 
 This link uses the probe ID as a mandatory parameter, then uses the command parameter to read your command:
+
 **Command should only use L (Left), R (Right), M (Move) as characters, any other character will be considered as a invalid command**
+
 **PUT - http://localhost:8080/probe/1?command=LMLMLM**
 
 # Field commands

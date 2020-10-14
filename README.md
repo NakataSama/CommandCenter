@@ -31,13 +31,22 @@ This link uses the probe ID as a mandatory parameter, then uses the command para
 **Command should only use L (Left), R (Right), M (Move) as characters, any other character will be considered as a invalid command**
 **PUT - http://localhost:8080/probe/1?command=LMLMLM**
 
-Other commands:
+# Field commands
+
 **GET - http://localhost:8080/fields** returns all fields registered.
+
 **GET - http://localhost:8080/field/{id}** returns the field with the ID stated on the link.
+
 **PUT - http://localhost:8080/field/{id}** updates the field, use a JSON Structure as the body of the request.
+
 **DELETE - http://localhost:8080/field/{id}** deletes the field.
 
+# Probe commands
+
 **GET - http://localhost:8080/probes** returns all probes registered.
+
 **GET - http://localhost:8080/probe/{id}** returns the probe with the ID stated on the link.
+
 **PUT - http://localhost:8080/probe/{id}** updates the probe, use a JSON Structure as the body of the request.
+
 **DELETE - http://localhost:8080/probe/{id}** deletes the probe.

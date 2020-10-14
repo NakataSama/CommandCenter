@@ -19,17 +19,14 @@ public enum DirectionEnum {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getDescription() {
 		return description;
 	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	
+	public static DirectionEnum getById(int id) {
+	    for(DirectionEnum eNum : values()) {
+	        if(eNum.getId() == id) return eNum;
+	    }
+	    return null;
 	}
-	
-	
 }

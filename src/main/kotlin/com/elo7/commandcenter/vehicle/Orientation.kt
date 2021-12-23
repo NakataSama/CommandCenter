@@ -7,17 +7,18 @@ enum class Orientation(private val id: Int, val description: String) {
     WEST(4, "West");
 
     fun changeOrientationFromDirectionInput(direction: String) : Orientation {
-        when(direction) {
+        return when(direction) {
             "l" -> {
-                return if(id == 1) WEST
-                else return fromId(id-1)
+                if(id == 1) WEST
+                else fromId(id-1)
             }
             "r" -> {
-                return if(id == 4) NORTH
-                else return fromId(id+1)
+                if(id == 4) NORTH
+                else fromId(id+1)
             }
-            else -> return this
+            else -> this
         }
     }
+
     private fun fromId(value: Int) = values().first { it.id == value }
 }

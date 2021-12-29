@@ -28,15 +28,15 @@ class Field(
         }
     }
 
-    fun getVehicleById(id: Int) : Vehicle? {
+    private fun getVehicleById(id: Int) : Vehicle? {
         return vehicles.find { it.getVehicleId() == id }
     }
 
-    fun isPositionAvailable(vehicleId: Int, nextPosition: Position): Boolean {
+    fun isPositionAvailable(vehicleId: Int, position: Position): Boolean {
         val occupiedPositions = vehicles.associate { it.getVehicleId() to it.getCurrentPosition() }
         return when {
-            occupiedPositions.containsValue(nextPosition) ->
-                vehicleId == occupiedPositions.filterValues { it == nextPosition }.keys.first()
+            occupiedPositions.containsValue(position) ->
+                vehicleId == occupiedPositions.filterValues { it == position }.keys.first()
             else -> true
         }
     }

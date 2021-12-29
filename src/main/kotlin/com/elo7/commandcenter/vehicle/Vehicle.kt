@@ -15,8 +15,8 @@ abstract class Vehicle(
     abstract fun move(): Vehicle
     abstract fun rotate(direction: String): Vehicle
 
-    protected fun isPositionValid(vehicleId: Int, nextPosition: Position) =
-        isPositionWithinFieldLimits(nextPosition) && field.isPositionAvailable(vehicleId, nextPosition)
+    protected fun isPositionValid(vehicleId: Int, position: Position) =
+        isPositionWithinFieldLimits(position) && field.isPositionAvailable(vehicleId, position)
 
     private fun isPositionWithinFieldLimits(nextPosition: Position) = when {
         (nextPosition.getX() > field.getLimitX() ||
